@@ -33,13 +33,12 @@
 if False:
     from unsloth import FastLanguageModel
     model, tokenizer = FastLanguageModel.from_pretrained(
-        model_name = "lawai_model", # YOUR MODEL YOU USED FOR TRAINING
+        model_name = "lawai_model",
         max_seq_length = max_seq_length,
         dtype = dtype,
         load_in_4bit = load_in_4bit,
     )
-    FastLanguageModel.for_inference(model) # Enable native 2x faster inference
-
+    FastLanguageModel.for_inference(model) 
 # alpaca_prompt = You MUST copy from above!
 
 inputs = tokenizer(
@@ -47,7 +46,7 @@ inputs = tokenizer(
     alpaca_prompt.format(
         "What is a penal code?", # instruction
         "", # input
-        "", # output - leave this blank for generation!
+        "", # output
     )
 ], return_tensors = "pt").to("cuda")
 
